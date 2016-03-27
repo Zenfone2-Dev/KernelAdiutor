@@ -111,7 +111,14 @@ public class Screen implements Constants {
     }
 
     public static void setMinBrightness(int value, Context context) {
-        Control.runCommand(String.valueOf(value), MIN_BRIGHTNESS, Control.CommandType.GENERIC, context);
+        switch (MIN_BRIGHTNESS) {
+            case ZE551ML_MIN_BRIGHTNESS:
+                Control.runCommand(String.valueOf(value + 2), MIN_BRIGHTNESS, Control.CommandType.GENERIC, context);
+                break;
+             default:
+                Control.runCommand(String.valueOf(value), MIN_BRIGHTNESS, Control.CommandType.GENERIC, context); 
+                break;
+        }
     }
 
     public static int getMaxMinBrightness() {
@@ -122,7 +129,7 @@ public class Screen implements Constants {
                 case MSM_BACKLIGHT_DIMMER:
                     return 100;
                 case ZE551ML_MIN_BRIGHTNESS:
-                    return 15;
+                    return 13;
             }
         }
         return 0;

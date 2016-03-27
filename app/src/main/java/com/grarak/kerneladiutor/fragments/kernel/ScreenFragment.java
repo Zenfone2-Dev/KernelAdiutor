@@ -609,13 +609,18 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
 
         if (Screen.hasMinBrightness()) {
             List<String> list = new ArrayList<>();
+            int n = 0; //this saves loop time, cause we can calculate it outside and after that use it in loop. //
+            if (Screen.getMaxMinBrightness() <= 13) { //this allows me to toggle things more easily for zf2.//
+            n = 2;
+            } else {
+            n = 0; }
             for (int i = 0; i <= Screen.getMaxMinBrightness(); i++)
                 list.add(String.valueOf(i));
 
             mBackLightDimmerMinBrightnessCard = new SeekBarCardView.DSeekBarCard(list);
             mBackLightDimmerMinBrightnessCard.setTitle(getString(R.string.min_brightness));
             mBackLightDimmerMinBrightnessCard.setDescription(getString(R.string.min_brightness_summary));
-            mBackLightDimmerMinBrightnessCard.setProgress(Screen.getCurMinBrightness());
+            mBackLightDimmerMinBrightnessCard.setProgress(Screen.getCurMinBrightness() - n);
             mBackLightDimmerMinBrightnessCard.setOnDSeekBarCardListener(this);
 
             views.add(mBackLightDimmerMinBrightnessCard);
