@@ -103,7 +103,6 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
 
     private SwitchCardView.DSwitchCard mBackLightDimmerEnableCard;
     private SeekBarCardView.DSeekBarCard mBackLightDimmerMinBrightnessCard;
-    private SeekBarCardView.DSeekBarCard mLedSetSpeedCard;
     private SeekBarCardView.DSeekBarCard mBackLightDimmerThresholdCard;
     private SeekBarCardView.DSeekBarCard mBackLightDimmerOffsetCard;
 
@@ -625,21 +624,6 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
             mBackLightDimmerMinBrightnessCard.setOnDSeekBarCardListener(this);
 
             views.add(mBackLightDimmerMinBrightnessCard);
-        }
-
-        if (Screen.hasLedSpeed()) {
-            List<String> list = new ArrayList<>();
-
-            for (int i = 0; i <= Screen.getMaxMinLedSpeed(); i++)
-                list.add(String.valueOf(i));
-
-            mLedSetSpeedCard = new SeekBarCardView.DSeekBarCard(list);
-            mLedSetSpeedCard.setTitle(getString(R.string.led_speed));
-            mLedSetSpeedCard.setDescription(getString(R.string.led_speed_summary));
-            mLedSetSpeedCard.setProgress(Screen.getCurLedSpeed());
-            mLedSetSpeedCard.setOnDSeekBarCardListener(this);
-
-            views.add(mLedSetSpeedCard);
         }
 
         if (Screen.hasBackLightDimmerThreshold()) {

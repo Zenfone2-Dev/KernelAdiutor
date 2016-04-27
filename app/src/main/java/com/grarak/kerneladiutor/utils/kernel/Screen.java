@@ -38,8 +38,6 @@ public class Screen implements Constants {
 
     private static String MIN_BRIGHTNESS;
 
-    private static String LED_SPEED;
-
     public static void activateGloveMode(boolean active, Context context) {
         Control.runCommand(active ? "glove" : "normal", GLOVE_MODE, Control.CommandType.GENERIC, context);
     }
@@ -149,34 +147,6 @@ public class Screen implements Constants {
                     return true;
                 }
         return MIN_BRIGHTNESS != null;
-    }
-
-    public static boolean hasLedSpeed() {
-        if (LED_SPEED == null)
-            for (String file : LED_ARRAY)
-                if (Utils.existFile(file)) {
-                    LED_SPEED = file;
-                    return true;
-                }
-        return LED_SPEED != null;
-    }
-
-    public static int getMaxMinLedSpeed() {
-        if (LED_SPEED != null) {
-            return 3;
-        }
-        return 0;
-    }
-
-    public static int getCurLedSpeed() {
-        return Utils.stringToInt(Utils.readFile(LED_SPEED));
-    }
-
-    public static void setLedSpeed(int value, Context context) {
-		for (String file : LED_ARRAY)
-                if (Utils.existFile(file)) {
-                    LED_SPEED = file; }
-                Control.runCommand(String.valueOf(value), LED_SPEED, Control.CommandType.GENERIC, context); 
     }
 
     public static void activateBackLightDimmer(boolean active, Context context) {

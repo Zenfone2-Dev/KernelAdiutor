@@ -398,6 +398,8 @@
     <string name="max_brightness_summary">Allows you to increase the LCD screen brightness higher than it\'s possible on stock.</string>
     <string name="backlight_dimmer">Backlight Dimmer</string>
     <string name="offset">Offset</string>
+    <string name="Led_toggle">Led Toggle</string>
+    <string name="Led_toggle_summary">Test Led blink.</string>
     <string name="negative_toggle">Negative Toggle</string>
     <string name="negative_toggle_summary">Enable inverting the screen colors by quickly pressing MENU button 4 times.</string>
     <string name="mdnie_global_controls">mDNIe global controls</string>
